@@ -6,7 +6,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        Map<Integer, Integer> map = new TreeMap<>();
+        TreeMapImpl<Integer, Integer> map = new TreeMapImpl<>();
         map.put(10, 5);
         map.put(5, 5);
         map.put(20, 5);
