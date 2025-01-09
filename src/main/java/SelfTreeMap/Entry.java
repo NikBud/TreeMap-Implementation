@@ -8,17 +8,16 @@ public class Entry<K, V> implements Map.Entry<K, V> {
     Entry<K, V> left;
     Entry<K, V> right;
 
-    // Ссылка на родителя. У каждого элемента дерева есть ссылка на своего родителя (кроме root элемента)
+    // Reference to the parent. Each tree node has a reference to its parent (except the root node).
     Entry<K, V> parent;
 
-    // Понятие side было введено для обозначения стороны каждого элемента дерева относительно родителя.
-    // Например:    5         Для элемента 7 поле side будет равно RIGHT, потому что относительно родителя оно находится справа.
-    //            /   \       А для 3 будет возвращено значение LEFT. Для 5 предусмотренно особое значение - ROOT.
-    //           3     7
+    // The concept of "side" was introduced to represent the side of each tree node relative to its parent.
+    // For example:    5         For the node 7, the "side" field will be RIGHT because it is to the right of its parent.
+    //              /   \       For 3, the value LEFT will be returned. For 5, a special value ROOT is defined.
+    //             3     7
     Side side;
 
     Color color;
-
 
     public Entry(K key, V value) {
         this.key = key;
@@ -54,15 +53,14 @@ public class Entry<K, V> implements Map.Entry<K, V> {
         this.right = null;
     }
 
-    public Entry<K, V> getUncle(){
+    public Entry<K, V> getUncle() {
         if (parent.parent != null) {
             if (parent.side == Side.LEFT) return parent.parent.right;
             else return parent.parent.left;
         }
 
-        throw new IllegalArgumentException("this node have no uncle");
+        throw new IllegalArgumentException("this node has no uncle");
     }
-
 
     @Override
     public K getKey() {

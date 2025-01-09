@@ -286,12 +286,7 @@ public class TreeMapImpl<K, V> implements Map<K, V> {
 
     @Override
     public void putAll(Map<? extends K, ? extends V> m) {
-        m.forEach((key, value) -> put(key, value));
-        // 2 способ
-        // m.entrySet().forEach(entry -> put(entry.getKey(),entry.getValue()));
-        // 3 способ
-        // m.forEach(this::put);
-
+        m.forEach(this::put);
     }
 
     @Override
